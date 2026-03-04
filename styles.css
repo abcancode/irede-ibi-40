@@ -299,6 +299,12 @@ body {
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
+@media (max-width: 600px) {
+  .hero-content {
+    transform: translateY(-25px);
+  }
+}
+
 /* =========================
    Hero Background Slideshow
 ========================= */
