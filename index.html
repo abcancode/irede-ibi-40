@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Irede Ibi — 40th Birthday</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+        <!-- LEFT: Logo -->
+        <a class="brand" href="#top" aria-label="Go to top">
+          <img
+            src="./assets/logo.svg"
+            alt="The Royal Ascension"
+            class="brand-image"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
+
+        <!-- Hamburger (mobile) -->
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="menu-btn__bars" aria-hidden="true"></span>
+        </button>
+
+        <!-- Desktop Links -->
+        <nav class="header-nav header-nav--desktop" aria-label="Primary">
+          <a class="nav-link" href="#nairobi" data-section="nairobi">Nairobi</a>
+          <a class="nav-link" href="#lamu" data-section="lamu">Lamu</a>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div class="mobile-menu" id="mobileMenu" hidden>
+        <nav class="header-nav header-nav--mobile" aria-label="Mobile Primary">
+          <a class="nav-link" href="#nairobi" data-section="nairobi">Nairobi</a>
+          <a class="nav-link" href="#lamu" data-section="lamu">Lamu</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-label="Hero">
+      <!-- Image slider background -->
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-bg__img i1"></span>
+        <span class="hero-bg__img i2"></span>
+        <span class="hero-bg__img i3"></span>
+        <span class="hero-bg__img i4"></span>
+        <span class="hero-bg__img i5"></span>
+        <span class="hero-bg__img i6"></span>
+        <span class="hero-bg__img i7"></span>
+        <span class="hero-bg__img i8"></span>
+      </div>
+
+      <!-- <div class="hero-overlay" aria-hidden="true"></div> -->
+
+      <div class="hero-content">
+        <div class="hero-pill">A Destination Celebration</div>
+
+        <h1 class="hero-title">
+          Irede &amp; Ibi's<br />
+          40th Birthday
+        </h1>
+      </div>
+    </section>
+
+    <!-- Countdown (Overlap card lives here so it stays ABOVE countdown) -->
+    <section class="countdown-section" id="countdown">
+      <!-- ✅ Overlap Card (pulled upward into hero) -->
+      <div class="countdown-overlap" aria-label="Event dates overview">
+        <div class="overlap-card">
+          <div class="overlap-item">
+            <div class="overlap-kicker">Optional</div>
+            <div class="overlap-date">August 16th – 18th, 2026</div>
+            <div class="overlap-meta">JW Marriott Nairobi</div>
+          </div>
+
+          <div class="overlap-divider" aria-hidden="true"></div>
+
+          <div class="overlap-item">
+            <div class="overlap-kicker">Main Event</div>
+            <div class="overlap-date">August 18th – 22nd, 2026</div>
+            <div class="overlap-meta">The Majlis Hotel, Lamu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="countdown-container">
+        <h2 class="countdown-title">The Royal Ascension</h2>
+
+        <p class="countdown-description">
+          This is more than a birthday. It is a celebration of purpose,
+          influence, and a life beautifully lived. Join us as we gather to honor
+          Irede & Ibi at 40 — a milestone worthy of grandeur.
+        </p>
+
+        <div class="countdown-grid">
+          <div class="countdown-box">
+            <div class="count-number" id="days">00</div>
+          </div>
+
+          <div class="countdown-box">
+            <div class="count-number" id="hours">00</div>
+          </div>
+
+          <div class="countdown-box">
+            <div class="count-number" id="minutes">00</div>
+          </div>
+
+          <div class="countdown-box">
+            <div class="count-number" id="seconds">00</div>
+          </div>
+        </div>
+
+        <div class="countdown-labels">
+          <span>DAYS</span>
+          <span>HOURS</span>
+          <span>MINUTES</span>
+          <span>SECONDS</span>
+        </div>
+
+        <p class="countdown-footer">...until the celebration.</p>
+      </div>
+    </section>
+
+    <!-- Prepare for the Celebration -->
+    <section class="prep" id="prepare">
+      <div class="prep-container">
+        <h2 class="prep-title">Prepare for the Celebration</h2>
+
+        <div class="prep-grid">
+          <!-- LEFT -->
+          <div class="prep-left">
+            <h3 class="prep-subtitle">Book your Accomodation</h3>
+
+            <div class="prep-cards">
+              <article class="prep-card">
+                <div class="prep-card__top">
+                  <div class="prep-card__date">16th - 18th</div>
+                  <div class="prep-card__place">JW Marriott Nairobi</div>
+                </div>
+
+                <!-- Nairobi booking -->
+                <a
+                  class="prep-link"
+                  href="https://www.marriott.com/en-us/hotels/nbojw-jw-marriott-hotel-nairobi/overview/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book Here <span class="prep-arrow" aria-hidden="true">→</span>
+                </a>
+              </article>
+
+              <article class="prep-card">
+                <div class="prep-card__top">
+                  <div class="prep-card__date">18th - 22nd</div>
+                  <div class="prep-card__place">The Majlis Hotel, Lamu</div>
+                </div>
+
+                <!-- Lamu booking -->
+                <a
+                  class="prep-link"
+                  href="https://www.themajlisresorts.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book Here <span class="prep-arrow" aria-hidden="true">→</span>
+                </a>
+              </article>
+            </div>
+
+            <div class="prep-block">
+              <h4 class="prep-q">Book your Flight.</h4>
+              <p class="prep-a">
+                Full flight details and accompanying travel information will be
+                shared in due course.
+              </p>
+            </div>
+
+            <div class="prep-block">
+              <h4 class="prep-q">Locate the Venue.</h4>
+              <p class="prep-a">
+                Check the directions or maps to avoid any last-minute confusion.
+              </p>
+
+              <div class="prep-links-row">
+                <a
+                  class="prep-link"
+                  href="https://www.google.com/maps/search/?api=1&query=JW+Marriott+Hotel+Nairobi"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Nairobi Map
+                  <span class="prep-arrow" aria-hidden="true">→</span>
+                </a>
+
+                <a
+                  class="prep-link"
+                  href="https://www.google.com/maps/search/?api=1&query=The+Majlis+Resort+Lamu"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Lamu Map <span class="prep-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="prep-block">
+              <h4 class="prep-q">Add Event to your Calendar.</h4>
+              <p class="prep-a">
+                Don’t miss a thing — set a reminder so you’re part of every
+                special moment.
+              </p>
+
+              <div class="prep-calendar">
+                <details class="calendar-dd" id="calendarDropdown">
+                  <summary class="calendar-dd__summary">
+                    Add to Calendar
+                    <span class="calendar-dd__chev" aria-hidden="true">▾</span>
+                  </summary>
+
+                  <div
+                    class="calendar-dd__panel"
+                    role="group"
+                    aria-label="Calendar options"
+                  >
+                    <div class="calendar-dd__group">
+                      <div class="calendar-dd__label">Main Event — Lamu</div>
+                      <div class="calendar-dd__actions">
+                        <a
+                          class="calendar-dd__link"
+                          id="gcalMainEvent"
+                          href="#"
+                          target="_blank"
+                          rel="noreferrer"
+                          >Google Calendar <span aria-hidden="true">→</span></a
+                        >
+                        <button
+                          class="calendar-dd__link"
+                          type="button"
+                          id="icsMainEvent"
+                        >
+                          Download .ics <span aria-hidden="true">→</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="calendar-dd__divider" aria-hidden="true"></div>
+
+                    <div class="calendar-dd__group">
+                      <div class="calendar-dd__label">Optional — Nairobi</div>
+                      <div class="calendar-dd__actions">
+                        <a
+                          class="calendar-dd__link"
+                          id="gcalOptionalEvent"
+                          href="#"
+                          target="_blank"
+                          rel="noreferrer"
+                          >Google Calendar <span aria-hidden="true">→</span></a
+                        >
+                        <button
+                          class="calendar-dd__link"
+                          type="button"
+                          id="icsOptionalEvent"
+                        >
+                          Download .ics <span aria-hidden="true">→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="prep-right">
+            <figure class="prep-photo prep-slider">
+              <img src="./assets/prepare-1.jpg" class="slide active" alt="" />
+              <img src="./assets/prepare-2.jpg" class="slide" alt="" />
+              <img src="./assets/prepare-3.jpg" class="slide" alt="" />
+              <img src="./assets/prepare-4.jpg" class="slide" alt="" />
+              <img src="./assets/prepare-5.jpg" class="slide" alt="" />
+            </figure>
+          </div>
+        </div>
+
+        <div class="prep-divider" role="presentation"></div>
+      </div>
+    </section>
+
+    <!-- Share a Message -->
+    <section class="message" id="message">
+      <div class="message-container">
+        <h2 class="message-title">Share A Message for Irede &amp; Ibi</h2>
+        <p class="message-subtitle">
+          Share your warm wishes. Your message can be anonymous if you prefer.
+        </p>
+
+        <form class="message-form" id="messageForm" novalidate>
+          <label class="field">
+            <span class="field-label">Name</span>
+            <input
+              class="field-input"
+              type="text"
+              name="name"
+              placeholder="Your name (optional)"
+            />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Message</span>
+            <textarea
+              class="field-textarea"
+              name="message"
+              rows="5"
+              placeholder=""
+              required
+            ></textarea>
+          </label>
+
+          <label class="field field-check">
+            <input class="field-checkbox" type="checkbox" id="privacyCheck" />
+            <span class="field-checktext"
+              >You agree to our friendly <a href="#">privacy policy</a>.</span
+            >
+          </label>
+
+          <button class="message-btn" type="submit">Send message</button>
+
+          <p class="form-note" id="formNote" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Royal Ascension Itinerary -->
+    <section class="itinerary" id="itinerary">
+      <div class="itinerary-container">
+        <h2 class="itinerary-title">The Royal Ascension Itinerary</h2>
+        <p class="itinerary-subtitle">
+          Seven days of adventure, celebration, and relaxation
+        </p>
+
+        <div class="itinerary-list">
+          <!-- Day Item -->
+          <div class="itinerary-item">
+            <button class="itinerary-header">
+              <div>
+                <div class="itinerary-date">August 16th, 2026</div>
+                <div class="itinerary-heading">Arrivals & Nairobi</div>
+              </div>
+              <span class="itinerary-icon">⌄</span>
+            </button>
+            <div class="itinerary-content">
+              <div class="itinerary-inner">
+                <div class="day-grid">
+                  <!-- LEFT -->
+                  <div class="day-left">
+                    <div class="day-block">
+                      <div class="day-label">Description</div>
+                      <p class="day-text">
+                        Welcome to Kenya! Discover the Nairobi National Museum,
+                        where Kenya’s rich history, culture, and art come to
+                        life. From ancient fossils revealing the story of human
+                        origins to vibrant galleries of African art, the museum
+                        offers a fascinating glimpse into the heritage and
+                        natural beauty of Kenya.
+                      </p>
+                    </div>
+
+                    <div class="day-block">
+                      <div class="day-label">Activities</div>
+                      <p class="day-text">
+                        Morning: Arrivals and hotel check-in’s
+                      </p>
+                      <p class="day-text">
+                        Afternoon: Nairobi Museum tour option
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- RIGHT -->
+                  <div class="day-right">
+                    <img
+                      class="day-image"
+                      src="./assets/nairobi-national-museum.jpg"
+                      alt="Nairobi National Museum"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="itinerary-item">
+            <button class="itinerary-header">
+              <div>
+                <div class="itinerary-date">August 17th, 2026</div>
+                <div class="itinerary-heading">Safari Adventure</div>
+              </div>
+              <span class="itinerary-icon">⌄</span>
+            </button>
+            <div class="itinerary-content">
+              <div class="itinerary-inner">
+                <div class="day-grid">
+                  <!-- LEFT -->
+                  <div class="day-left">
+                    <div class="day-block">
+                      <div class="day-label">Description</div>
+                      <p class="day-text">
+                        Experience the breathtaking Nairobi National Park, the
+                        world’s only wildlife park located beside a capital
+                        city. Just minutes from downtown Nairobi, the park
+                        offers a rare chance to see lions, rhinos, giraffes, and
+                        other wildlife roaming freely against the stunning
+                        backdrop of the Nairobi skyline. It’s a truly
+                        unforgettable blend of nature and city life.
+                      </p>
+                    </div>
+
+                    <div class="day-block">
+                      <div class="day-label">Activities</div>
+                      <p class="day-text">
+                        Morning: Nairobi National Park-Safari Day
+                      </p>
+                      <p class="day-text">
+                        Afternoon: Optional Explore Nightlife in Nairobi
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- RIGHT -->
+                  <div class="day-right">
+                    <img
+                      class="day-image"
+                      src="./assets/nairobi-national-park.jpg"
+                      alt="Nairobi National Park"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="itinerary-item">
+            <button class="itinerary-header">
+              <div>
+                <div class="itinerary-date">August 18th, 2026</div>
+                <div class="itinerary-heading">The Majlis Hotel</div>
+              </div>
+              <span class="itinerary-icon">⌄</span>
+            </button>
+            <div class="itinerary-content">
+              <div class="itinerary-inner">
+                <div class="day-grid">
+                  <!-- LEFT -->
+                  <div class="day-left">
+                    <div class="day-block">
+                      <div class="day-label">Description</div>
+                      <p class="day-text">
+                        Relax at the stunning The Majlis Hotel, a luxury
+                        beachfront retreat overlooking the turquoise waters of
+                        the Indian Ocean. With elegant Swahili-inspired
+                        architecture, serene ocean views, and warm coastal
+                        hospitality, it offers the perfect blend of comfort,
+                        culture, and tranquility in the heart of Lamu.
+                      </p>
+                    </div>
+
+                    <div class="day-block">
+                      <div class="day-label">Activities</div>
+                      <p class="day-text">
+                        Afternoon: Departure for the Majlis Hotel
+                      </p>
+                      <p class="day-text">
+                        Evening: Informal dinner and local exploration.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- RIGHT -->
+                  <div class="day-right">
+                    <img
+                      class="day-image"
+                      src="./assets/the-majlis-hotel-1.jpg"
+                      alt="The Majlis Hotel Lamu"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="itinerary-item">
+            <button class="itinerary-header">
+              <div>
+                <div class="itinerary-date">August 19th, 2026</div>
+                <div class="itinerary-heading">Irede’s 40th Birthday</div>
+              </div>
+              <span class="itinerary-icon">⌄</span>
+            </button>
+            <div class="itinerary-content">
+              <div class="itinerary-inner">
+                <div class="day-grid">
+                  <!-- LEFT -->
+                  <div class="day-left">
+                    <div class="day-block">
+                      <div class="day-label">Description</div>
+                      <p class="day-text">
+                        Celebrate Irede's milestone with wellness activities and
+                        an unforgettable evening performance and fireworks.
+                      </p>
+                    </div>
+
+                    <div class="day-block">
+                      <div class="day-label">Activities</div>
+                      <p class="day-text">Morning: Wellness Morning/Spa</p>
+                      <p class="day-text">
+                        Evening: Irede's 40th Birthday Experience (to end with
+                        performances and fireworks).
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- RIGHT -->
+                  <div class="day-right">
+                    <img
+                      class="day-image"
+                      src="./assets/irede-fireworks.jpg"
+                      alt="Irede's Birthday Fireworks"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="itinerary-item">
+            <button class="itinerary-header">
+              <div>
+                <div class="itinerary-date">August 20th, 2026</div>
+                <div class="itinerary-heading">Ibi’s 40th Birthday</div>
+              </div>
+              <span class="itinerary-icon">⌄</span>
+            </button>
+            <div class="itinerary-content">
+              <div class="itinerary-inner">
+                <div class="day-grid">
+                  <!-- LEFT -->
+                  <div class="day-left">
+                    <div class="day-block">
+                      <div class="day-label">Description</div>
+                      <p class="day-text">
+                        Celebrate Ibi's special day with a luxurious boat tour
+                        and Nikki Beach-style brunch experience.
+                      </p>
+                    </div>
+
+                    <div class="day-block">
+                      <div class="day-label">Activities</div>
+                      <p class="day-text">
+                        Afternoon: Boat Tour to Ibi's 40th Brunch Birthday
+                        Experience "Nikki Beach" Style.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- RIGHT -->
+                  <div class="day-right">
+                    <img
+                      class="day-image"
+                      src="./assets/ibi-boat-tour.jpg"
+                      alt="Ibi's Birthday Boat Tour"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="itinerary-item">
+            <button class="itinerary-header">
+              <div>
+                <div class="itinerary-date">August 21st, 2026</div>
+                <div class="itinerary-heading">Local Activities</div>
+              </div>
+              <span class="itinerary-icon">⌄</span>
+            </button>
+            <div class="itinerary-content">
+              <div class="itinerary-inner">
+                <div class="day-grid">
+                  <!-- LEFT -->
+                  <div class="day-left">
+                    <div class="day-block">
+                      <div class="day-label">Description</div>
+                      <p class="day-text">
+                        Enjoy a variety of local activities in Lamu, from
+                        sailing traditional dhows along the Indian Ocean to
+                        exploring the charming streets of Lamu Old Town.
+                        Experience the island’s unique culture with camel rides
+                        on the beach, vibrant local markets, and the laid-back
+                        rhythm of coastal Swahili life.
+                      </p>
+                    </div>
+
+                    <!-- <div class="day-block">
+                      <div class="day-label">Activities</div>
+                      <p class="day-text">
+                        Morning: Arrivals and hotel check-in’s
+                      </p>
+                      <p class="day-text">
+                        Afternoon: Nairobi Museum tour option
+                      </p>
+                    </div> -->
+                  </div>
+
+                  <!-- RIGHT -->
+                  <div class="day-right">
+                    <img
+                      class="day-image"
+                      src="./assets/local-activities.jpg"
+                      alt="Local Activities"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="itinerary-item">
+            <button class="itinerary-header">
+              <div>
+                <div class="itinerary-date">August 22nd, 2026</div>
+                <div class="itinerary-heading">Departures</div>
+              </div>
+              <span class="itinerary-icon">⌄</span>
+            </button>
+            <div class="itinerary-content">
+              <div class="itinerary-inner">
+                <div class="day-grid">
+                  <!-- LEFT -->
+                  <div class="day-left">
+                    <div class="day-block">
+                      <div class="day-label">Description</div>
+                      <p class="day-text">
+                        As the celebration comes to an end, take a final moment
+                        to soak in the serene beauty of Lamu’s coastline and the
+                        gentle rhythm of the Indian Ocean. Depart with
+                        unforgettable memories of Kenya’s culture, wildlife, and
+                        coastal charm, carrying a piece of this remarkable
+                        experience with you.
+                      </p>
+                    </div>
+
+                    <!-- <div class="day-block">
+                      <div class="day-label">Activities</div>
+                      <p class="day-text">
+                        Morning: Arrivals and hotel check-in’s
+                      </p>
+                      <p class="day-text">
+                        Afternoon: Nairobi Museum tour option
+                      </p>
+                    </div> -->
+                  </div>
+
+                  <!-- RIGHT -->
+                  <div class="day-right">
+                    <img
+                      class="day-image"
+                      src="./assets/departure.jpg"
+                      alt="Departure"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Royal Ascension Gallery -->
+    <section class="gallery" id="gallery">
+      <div class="gallery-container">
+        <h2 class="gallery-title">The Royal Ascension Gallery</h2>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <figure class="gallery-item" data-full="./assets/gallery-1.jpg">
+            <img
+              src="./assets/gallery-1.jpg"
+              alt="Resort poolside view"
+              loading="lazy"
+            />
+            <figcaption class="gallery-cap">Poolside Calm</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/gallery-2.jpg">
+            <img
+              src="./assets/gallery-2.jpg"
+              alt="Stone courtyard and water feature"
+              loading="lazy"
+            />
+            <figcaption class="gallery-cap">Courtyard Escape</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/gallery-3.jpg">
+            <img
+              src="./assets/gallery-3.jpg"
+              alt="Outdoor lounge dining space"
+              loading="lazy"
+            />
+            <figcaption class="gallery-cap">Open-Air Lounge</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/gallery-4.jpg">
+            <img
+              src="./assets/gallery-4.jpg"
+              alt="Ocean view at golden hour"
+              loading="lazy"
+            />
+            <figcaption class="gallery-cap">Ocean Breeze</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/gallery-5.jpg">
+            <img
+              src="./assets/gallery-5.jpg"
+              alt="Sunset sail on the water"
+              loading="lazy"
+            />
+            <figcaption class="gallery-cap">Sunset Sail</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/gallery-6.jpg">
+            <img
+              src="./assets/gallery-6.jpg"
+              alt="Beach view and boats"
+              loading="lazy"
+            />
+            <figcaption class="gallery-cap">Island Horizon</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" hidden aria-hidden="true">
+        <div class="lightbox-backdrop" data-close></div>
+
+        <div
+          class="lightbox-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Gallery image"
+        >
+          <button
+            class="lightbox-close"
+            type="button"
+            aria-label="Close"
+            data-close
+          >
+            ✕
+          </button>
+
+          <button
+            class="lightbox-nav lightbox-prev"
+            type="button"
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+          <button
+            class="lightbox-nav lightbox-next"
+            type="button"
+            aria-label="Next"
+          >
+            ›
+          </button>
+
+          <figure class="lightbox-figure">
+            <img class="lightbox-img" id="lightboxImg" alt="" />
+            <figcaption class="lightbox-cap" id="lightboxCap"></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <!-- Left: logo + wordmark -->
+          <a class="footer-brand" href="#top" aria-label="Back to top">
+            <img
+              src="./assets/logo.svg"
+              alt="The Royal Ascension"
+              class="footer-logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+
+          <!-- Middle: locations -->
+          <div class="footer-col">
+            <div class="footer-title">Event Locations</div>
+            <div class="footer-link">JW Marriott Nairobi</div>
+            <div class="footer-link">The Majlis Hotel, Lamu</div>
+          </div>
+
+          <!-- Right: dates -->
+          <div class="footer-col">
+            <div class="footer-title">Dates</div>
+            <div class="footer-link">August 16th - 18th, 2026 (Optional)</div>
+            <div class="footer-link">August 18th - 22nd, 2026 (Main Event)</div>
+          </div>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <div class="footer-bottom">
+          Irede &amp; Ibi's 40th Birthday Celebration
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top (Premium + Progress Ring) -->
+    <button
+      class="backtop"
+      id="backTop"
+      type="button"
+      aria-label="Back to top"
+      hidden
+    >
+      <span class="backtop__ring" aria-hidden="true">
+        <svg class="backtop__svg" viewBox="0 0 36 36">
+          <!-- Track -->
+          <path
+            class="backtop__track"
+            d="M18 2.5a15.5 15.5 0 1 1 0 31a15.5 15.5 0 1 1 0-31"
+          />
+          <!-- Progress -->
+          <path
+            class="backtop__progress"
+            d="M18 2.5a15.5 15.5 0 1 1 0 31a15.5 15.5 0 1 1 0-31"
+          />
+        </svg>
+      </span>
+
+      <span class="backtop__icon" aria-hidden="true">↑</span>
+      <span class="backtop__text">Top</span>
+    </button>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
