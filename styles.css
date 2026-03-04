@@ -62,9 +62,9 @@ body {
   padding: 4px 0;
 }
 
-/* keeping your exact value */
+/* ✅ Responsive on all screens; keeps 74px on large */
 .brand-image {
-  width: clamp(250px, 36vw, 200px);
+  width: clamp(56px, 8vw, 74px);
   height: auto;
   display: block;
 }
@@ -225,13 +225,13 @@ body {
   height: 100vh;
   min-height: 640px;
   overflow: hidden;
-  /* background: #000; */
   z-index: 1;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.28),
@@ -239,13 +239,16 @@ body {
   );
 }
 
+/* ✅ EXACT center on all screens */
 .hero-content {
   position: relative;
   z-index: 2;
   height: 100%;
-  padding: 110px 20px 70px;
   max-width: var(--container);
   margin: 0 auto;
+
+  /* keep only side padding so centering is mathematically exact */
+  padding: 0 20px;
 
   display: flex;
   flex-direction: column;
@@ -253,7 +256,9 @@ body {
   justify-content: center;
   gap: 18px;
   text-align: center;
-  transform: translateY(-40px);
+
+  /* remove manual offsets */
+  transform: none;
 }
 
 .hero-pill {
@@ -299,109 +304,80 @@ body {
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-@media (max-width: 600px) {
-  .hero-content {
-    transform: translateY(-25px);
-  }
-}
-
 /* =========================
-   Hero Background Slideshow
+   Hero Video Background
 ========================= */
 
-.hero-bg {
+/* =========================
+   Hero Video Background
+========================= */
+
+.hero-video {
   position: absolute;
   inset: 0;
   z-index: 0;
-}
 
-/* Each layer */
-.hero-bg__img {
-  position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
+  /* cinematic motion */
   transform: scale(1.08);
+  animation: heroVideoMove 40s ease-in-out infinite alternate;
+
   opacity: 0;
-
-  animation: heroFade 64s infinite;
-  will-change: opacity, transform;
+  transition: opacity 600ms ease;
 }
 
-/* Assign images */
-.hero-bg__img.i1 {
-  background-image: url("./assets/hero-1.jpg");
-  animation-delay: 0s;
-}
-.hero-bg__img.i2 {
-  background-image: url("./assets/hero-2.jpg");
-  animation-delay: 8s;
-}
-.hero-bg__img.i3 {
-  background-image: url("./assets/hero-3.jpg");
-  animation-delay: 16s;
-}
-.hero-bg__img.i4 {
-  background-image: url("./assets/hero-4.jpg");
-  animation-delay: 24s;
-}
-.hero-bg__img.i5 {
-  background-image: url("./assets/hero-5.jpg");
-  animation-delay: 32s;
-}
-.hero-bg__img.i6 {
-  background-image: url("./assets/hero-6.jpg");
-  animation-delay: 40s;
-}
-.hero-bg__img.i7 {
-  background-image: url("./assets/hero-7.jpg");
-  animation-delay: 48s;
-}
-.hero-bg__img.i8 {
-  background-image: url("./assets/hero-8.jpg");
-  animation-delay: 56s;
+/* Fade in once ready */
+.hero-video.is-ready {
+  opacity: 1;
 }
 
-/* Slow luxury fade + zoom */
-@keyframes heroFade {
+/* Slow cinematic movement */
+@keyframes heroVideoMove {
   0% {
-    opacity: 0;
-    transform: scale(1.08);
+    transform: scale(1.08) translateY(0px);
   }
 
-  4% {
-    opacity: 1;
-  }
-
-  12% {
-    opacity: 1;
-    transform: scale(1.04);
-  }
-
-  16% {
-    opacity: 0;
-    transform: scale(1.02);
+  50% {
+    transform: scale(1.1) translateY(-10px);
   }
 
   100% {
-    opacity: 0;
+    transform: scale(1.12) translateY(0px);
   }
 }
 
-/* Reduced motion accessibility */
+/* Fade video in once ready */
+.hero-video.is-ready {
+  opacity: 1;
+}
+
+/* Reduced motion fallback */
 @media (prefers-reduced-motion: reduce) {
-  .hero-bg__img {
-    animation: none;
-    opacity: 0;
-    transform: none;
+  .hero-video {
+    display: none;
   }
 
-  .hero-bg__img.i1 {
-    opacity: 1;
+  .hero {
+    background: #000 url("./assets/hero-1.jpg") center/cover no-repeat;
   }
+}
+
+.hero-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+
+  pointer-events: none;
 }
 
 /* =========================
@@ -572,10 +548,6 @@ body {
     padding: 14px 16px;
   }
 
-  .brand-image {
-    width: min(62vw, 340px);
-  }
-
   .header-nav--desktop {
     display: none;
   }
@@ -586,10 +558,6 @@ body {
 }
 
 @media (max-width: 520px) {
-  .brand-image {
-    width: min(72vw, 320px);
-  }
-
   .nav-link {
     font-size: 15px;
     padding: 10px 6px;
@@ -599,11 +567,7 @@ body {
     min-height: 520px;
   }
 
-  .hero-content {
-    padding: 96px 16px 54px;
-    gap: 14px;
-  }
-
+  /* keep typography tweaks, but do NOT touch hero centering */
   .hero-pill {
     font-size: 11px;
     padding: 9px 14px;
@@ -628,13 +592,10 @@ body {
   }
 }
 
-/* Reduced motion */
+/* Reduced motion (no video in your current hero, keep safe fallback anyway) */
 @media (prefers-reduced-motion: reduce) {
-  .hero-video {
-    display: none;
-  }
   .hero {
-    background: #000 url("./assets/hero-poster.jpg") center/cover no-repeat;
+    background: #000 url("./assets/hero-1.jpg") center/cover no-repeat;
   }
 }
 
@@ -744,12 +705,28 @@ body {
   font-size: 18px;
 }
 
+/* Premium justified body copy (Prep section only) */
 .prep-a {
-  margin: 0;
-  color: rgba(25, 9, 6, 0.6);
-  line-height: 1.6;
-  font-size: 13px;
-  max-width: 58ch;
+  text-align: justify;
+  text-justify: inter-word;
+
+  /* helps justification look more natural */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+
+  /* nicer reading rhythm */
+  line-height: 1.75;
+
+  /* keeps ragged edges from looking weird on narrow screens */
+  max-width: 62ch;
+}
+
+/* Prevent ugly spacing on very small screens */
+@media (max-width: 520px) {
+  .prep-a {
+    text-align: left; /* better readability on mobile */
+    hyphens: none;
+  }
 }
 
 .prep-right {
@@ -757,20 +734,36 @@ body {
   justify-content: flex-end;
 }
 
+/* Prep photo container */
 .prep-photo {
   margin: 0;
   width: min(520px, 100%);
   border-radius: 14px;
   overflow: hidden;
   background: #ddd;
+  aspect-ratio: 4 / 5;
+  position: relative;
 }
 
-.prep-photo img {
+.prep-slider img {
+  position: absolute;
+  inset: 0;
+
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
-  aspect-ratio: 4 / 5;
+
+  opacity: 0;
+  transform: scale(1.05);
+
+  transition:
+    opacity 1200ms ease,
+    transform 4000ms ease;
+}
+
+.prep-slider img.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Divider line under the section */
@@ -1013,9 +1006,6 @@ body {
   color: rgba(25, 9, 6, 0.6);
 }
 
-/* =========================
-   Itinerary Section
-========================= */
 /* =========================
    Itinerary Section (Accordion)
 ========================= */
@@ -1284,28 +1274,6 @@ body {
   transition: opacity 900ms ease;
 }
 
-/* Caption */
-.gallery-cap {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 16px;
-  margin: 0;
-
-  font-family: var(--font-header);
-  font-weight: 600;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.92);
-
-  letter-spacing: 0.01em;
-
-  transform: translateY(6px);
-  opacity: 0.92;
-  transition:
-    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 700ms ease;
-}
-
 /* Hover: lift + softer highlight + zoom */
 .gallery-item:hover {
   transform: translateY(-6px);
@@ -1320,11 +1288,6 @@ body {
 
 .gallery-item:hover::after {
   opacity: 0.95;
-}
-
-.gallery-item:hover .gallery-cap {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 /* Scroll reveal (applied via JS) */
@@ -1424,7 +1387,6 @@ body {
   color: rgba(25, 9, 6, 0.82);
 }
 
-/* Close */
 .lightbox-close {
   position: absolute;
   top: 10px;
@@ -1439,7 +1401,6 @@ body {
   cursor: pointer;
 }
 
-/* Nav */
 .lightbox-nav {
   position: absolute;
   top: 50%;
@@ -1471,7 +1432,7 @@ body {
     margin: 9vh auto;
   }
   .lightbox-nav {
-    display: none; /* swipe/keyboard still works */
+    display: none;
   }
 }
 
@@ -1507,7 +1468,6 @@ body {
   align-items: start;
 }
 
-/* Brand */
 .footer-brand {
   display: inline-flex;
   align-items: flex-start;
@@ -1517,13 +1477,10 @@ body {
 .footer-logo {
   width: min(260px, 62vw);
   height: auto;
-
-  /* makes the SVG look “silver” like the reference */
   filter: brightness(1.9) contrast(1.1);
   opacity: 0.95;
 }
 
-/* Columns */
 .footer-col {
   text-align: left;
 }
@@ -1543,14 +1500,12 @@ body {
   line-height: 1.8;
 }
 
-/* Divider */
 .footer-divider {
   margin: 44px 0 26px;
   height: 1px;
   background: rgba(255, 255, 255, 0.22);
 }
 
-/* Bottom */
 .footer-bottom {
   text-align: center;
   font-family: var(--font-body);
@@ -1558,7 +1513,6 @@ body {
   color: rgba(255, 255, 255, 0.78);
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .footer-top {
     grid-template-columns: 1fr;
@@ -1577,7 +1531,6 @@ body {
 /* =========================
    Back to Top (Premium / Royal + Scroll Progress)
 ========================= */
-
 .backtop {
   position: fixed;
   right: clamp(16px, 3vw, 28px);
@@ -1621,10 +1574,6 @@ body {
   pointer-events: auto;
 }
 
-/* =========================
-   Ring Container
-========================= */
-
 .backtop__ring {
   width: 32px;
   height: 32px;
@@ -1644,22 +1593,18 @@ body {
     inset 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
-/* SVG Progress Ring */
-
 .backtop__svg {
   width: 32px;
   height: 32px;
   transform: rotate(-90deg);
 }
 
-/* Background track */
 .backtop__track {
   fill: none;
   stroke: rgba(25, 9, 6, 0.18);
   stroke-width: 2.2;
 }
 
-/* Animated progress stroke */
 .backtop__progress {
   fill: none;
   stroke: rgba(25, 9, 6, 0.75);
@@ -1674,14 +1619,9 @@ body {
     stroke 300ms ease;
 }
 
-/* When nearly at bottom (JS can add .is-complete) */
 .backtop.is-complete .backtop__progress {
-  stroke: #b28c4a; /* subtle royal gold */
+  stroke: #b28c4a;
 }
-
-/* =========================
-   Icon & Text
-========================= */
 
 .backtop__icon {
   font-size: 14px;
@@ -1697,10 +1637,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* =========================
-   Hover Effects
-========================= */
-
 .backtop:hover {
   background: rgba(254, 255, 246, 0.9);
   border-color: rgba(25, 9, 6, 0.28);
@@ -1714,71 +1650,25 @@ body {
   transform: translateY(-3px);
 }
 
-/* =========================
-   Focus State
-========================= */
-
 .backtop:focus-visible {
   outline: 2px solid rgba(25, 9, 6, 0.35);
   outline-offset: 3px;
 }
 
-/* =========================
-   Reduced Motion
-========================= */
-
 @media (prefers-reduced-motion: reduce) {
   .backtop {
     transition: none;
   }
-
   .backtop:hover .backtop__icon {
     transform: none;
   }
-
   .backtop__progress {
     transition: none;
   }
 }
 
 /* =========================
-   Prep Image Slider
-========================= */
-
-.prep-photo {
-  margin: 0;
-  width: min(520px, 100%);
-  border-radius: 14px;
-  overflow: hidden;
-  background: #ddd;
-  aspect-ratio: 4 / 5;
-  position: relative;
-}
-
-.prep-slider img {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  opacity: 0;
-  transform: scale(1.05);
-
-  transition:
-    opacity 1200ms ease,
-    transform 4000ms ease;
-}
-
-.prep-slider img.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* =========================
-
-   Responsive
+   Prep Image Slider Responsive
 ========================= */
 @media (max-width: 900px) {
   .prep {

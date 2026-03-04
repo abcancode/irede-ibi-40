@@ -60,22 +60,27 @@
 
     <!-- Hero -->
     <section class="hero" id="hero" aria-label="Hero">
-      <!-- Image slider background -->
-      <div class="hero-bg" aria-hidden="true">
-        <span class="hero-bg__img i1"></span>
-        <span class="hero-bg__img i2"></span>
-        <span class="hero-bg__img i3"></span>
-        <span class="hero-bg__img i4"></span>
-        <span class="hero-bg__img i5"></span>
-        <span class="hero-bg__img i6"></span>
-        <span class="hero-bg__img i7"></span>
-        <span class="hero-bg__img i8"></span>
-      </div>
+      <!-- Hero Video Background -->
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="https://res.cloudinary.com/djp4j1mvn/video/upload/so_0,w_1600,q_auto,f_jpg/lmegwvlwdzjubjq9rqtf.jpg"
+      >
+        <source
+          src="https://res.cloudinary.com/djp4j1mvn/video/upload/w_1280,q_auto/lmegwvlwdzjubjq9rqtf.mp4"
+          type="video/mp4"
+        />
+      </video>
 
-      <!-- <div class="hero-overlay" aria-hidden="true"></div> -->
+      <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <div class="hero-pill">A Destination Celebration</div>
+        <div class="hero-pill">The Royal Ascension</div>
 
         <h1 class="hero-title">
           Irede &amp; Ibi's<br />
@@ -151,9 +156,26 @@
         <div class="prep-grid">
           <!-- LEFT -->
           <div class="prep-left">
-            <h3 class="prep-subtitle">Book your Accomodation</h3>
+            <h3 class="prep-subtitle">Book your Accommodation</h3>
 
             <div class="prep-cards">
+              <article class="prep-card">
+                <div class="prep-card__top">
+                  <div class="prep-card__date">18th - 22nd</div>
+                  <div class="prep-card__place">The Majlis Hotel, Lamu</div>
+                </div>
+
+                <!-- Lamu booking -->
+                <a
+                  class="prep-link"
+                  href="https://themajlisresorts.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book Here <span class="prep-arrow" aria-hidden="true">→</span>
+                </a>
+              </article>
+
               <article class="prep-card">
                 <div class="prep-card__top">
                   <div class="prep-card__date">16th - 18th</div>
@@ -164,23 +186,6 @@
                 <a
                   class="prep-link"
                   href="https://www.marriott.com/en-us/hotels/nbojw-jw-marriott-hotel-nairobi/overview/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Book Here <span class="prep-arrow" aria-hidden="true">→</span>
-                </a>
-              </article>
-
-              <article class="prep-card">
-                <div class="prep-card__top">
-                  <div class="prep-card__date">18th - 22nd</div>
-                  <div class="prep-card__place">The Majlis Hotel, Lamu</div>
-                </div>
-
-                <!-- Lamu booking -->
-                <a
-                  class="prep-link"
-                  href="https://www.themajlisresorts.com/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -303,11 +308,14 @@
           <!-- RIGHT -->
           <div class="prep-right">
             <figure class="prep-photo prep-slider">
-              <img src="./assets/prepare-1.jpg" class="slide active" alt="" />
-              <img src="./assets/prepare-2.jpg" class="slide" alt="" />
-              <img src="./assets/prepare-3.jpg" class="slide" alt="" />
-              <img src="./assets/prepare-4.jpg" class="slide" alt="" />
-              <img src="./assets/prepare-5.jpg" class="slide" alt="" />
+              <img src="./assets/hero-1.jpg" class="slide active" alt="" />
+              <img src="./assets/hero-2.jpg" class="slide" alt="" />
+              <img src="./assets/hero-3.jpg" class="slide" alt="" />
+              <img src="./assets/hero-4.jpg" class="slide" alt="" />
+              <img src="./assets/hero-5.jpg" class="slide" alt="" />
+              <img src="./assets/hero-6.jpg" class="slide" alt="" />
+              <img src="./assets/hero-7.jpg" class="slide" alt="" />
+              <img src="./assets/hero-8.jpg" class="slide" alt="" />
             </figure>
           </div>
         </div>

@@ -483,3 +483,15 @@ if (prepSlides.length) {
     prepSlides[prepIndex].classList.add("active");
   }, 5000);
 }
+
+const heroVideo = document.querySelector(".hero-video");
+
+if (heroVideo) {
+  heroVideo.addEventListener(
+    "canplay",
+    () => {
+      heroVideo.classList.add("is-ready");
+    },
+    { once: true },
+  );
+}
