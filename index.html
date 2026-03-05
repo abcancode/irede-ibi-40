@@ -17,6 +17,30 @@
   </head>
 
   <body>
+    <!-- Site Preloader -->
+    <div id="sitePreloader" class="preloader" aria-hidden="false">
+      <div class="preloader__backdrop"></div>
+
+      <div class="preloader__card" role="status" aria-live="polite">
+        <div class="preloader__brand">The Royal Ascension</div>
+
+        <div class="preloader__line">
+          <span class="preloader__dot"></span>
+          <span class="preloader__dot"></span>
+          <span class="preloader__dot"></span>
+        </div>
+
+        <div class="preloader__bar" aria-hidden="true">
+          <div class="preloader__barFill" id="preloaderBar"></div>
+        </div>
+
+        <div class="preloader__meta">
+          <span class="preloader__hint">Preparing your experience</span>
+          <span class="preloader__pct" id="preloaderPct">0%</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Header -->
     <header class="site-header" role="banner">
       <div class="header-inner">
@@ -95,16 +119,17 @@
       <div class="countdown-overlap" aria-label="Event dates overview">
         <div class="overlap-card">
           <div class="overlap-item">
-            <div class="overlap-kicker">Main Event</div>
-            <div class="overlap-date">August 18th – 22nd, 2026</div>
-            <div class="overlap-meta">The Majlis Hotel, Lamu</div>
+            <!-- <div class="overlap-kicker">Main Event</div> -->
+            <div class="overlap-date">The Majlis Hotel, Lamu</div>
+            <div class="overlap-meta">August 18th – 22nd, 2026</div>
           </div>
 
           <div class="overlap-divider" aria-hidden="true"></div>
 
-          <div class="overlap-item">
-            <div class="overlap-date">August 16th – 18th, 2026</div>
-            <div class="overlap-meta">JW Marriott Nairobi</div>
+          <div class="overlap-item overlap-item--small">
+            <div class="overlap-kicker">Optional</div>
+            <div class="overlap-date">JW Marriott Nairobi</div>
+            <div class="overlap-meta">August 16th – 18th, 2026</div>
           </div>
         </div>
       </div>
@@ -144,7 +169,7 @@
           <span>SECONDS</span>
         </div>
 
-        <p class="countdown-footer">...until the celebration.</p>
+        <!-- <p class="countdown-footer">...until the celebration.</p> -->
       </div>
     </section>
 
@@ -210,9 +235,9 @@
             </div>
 
             <div class="prep-block">
-              <h4 class="prep-q">Locate the Venue.</h4>
+              <h4 class="prep-q">Explore the Venues.</h4>
               <p class="prep-a">
-                Check the directions or maps to avoid any last-minute confusion.
+                Check the maps and explore the venues and surrounding locations.
               </p>
 
               <div class="prep-links-row">

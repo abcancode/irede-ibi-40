@@ -495,3 +495,57 @@ if (heroVideo) {
     { once: true },
   );
 }
+
+// =========================
+// Premium Site Preloader
+// =========================
+(() => {
+  const pre = document.getElementById("sitePreloader");
+  if (!pre) return;
+
+  const bar = document.getElementById("preloaderBar");
+  const pct = document.getElementById("preloaderPct");
+
+  document.body.classList.add("is-loading");
+
+  let progress = 0;
+  let rafId = null;
+
+  // Smooth fake progress (real “load complete” will finish it)
+  const tick = () => {
+    // ease up quickly, then slow down so it feels real
+    const cap = 92; // stop here until fully loaded
+    if (progress < cap) {
+      progress += progress < 60 ? 2.2 : 0.6;
+      progress = Math.min(progress, cap);
+      if (bar) bar.style.width = `${progress}%`;
+      if (pct) pct.textContent = `${Math.round(progress)}%`;
+      rafId = requestAnimationFrame(tick);
+    }
+  };
+
+  rafId = requestAnimationFrame(tick);
+
+  const finish = () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    progress = 100;
+    if (bar) bar.style.width = "100%";
+    if (pct) pct.textContent = "100%";
+
+    // give it a beat to feel premium
+    setTimeout(() => {
+      pre.classList.add("is-done");
+      pre.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("is-loading");
+
+      // optional: fully remove after fade
+      setTimeout(() => pre.remove(), 650);
+    }, 220);
+  };
+
+  // When everything (images, video metadata etc.) is ready
+  window.addEventListener("load", finish, { once: true });
+
+  // Safety: if load hangs, still exit after 6.5s
+  setTimeout(finish, 6500);
+})();
