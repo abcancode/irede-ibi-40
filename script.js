@@ -497,7 +497,7 @@ if (heroVideo) {
 }
 
 // =========================
-// Premium Site Preloader
+// Premium Site Preloader (with minimum display time)
 // =========================
 (() => {
   const pre = document.getElementById("sitePreloader");
@@ -511,15 +511,19 @@ if (heroVideo) {
   let progress = 0;
   let rafId = null;
 
-  // Smooth fake progress (real “load complete” will finish it)
+  const MIN_TIME = 2200; // ⏱ minimum time preloader stays visible
+  const startTime = Date.now();
+
   const tick = () => {
-    // ease up quickly, then slow down so it feels real
-    const cap = 92; // stop here until fully loaded
+    const cap = 92;
+
     if (progress < cap) {
-      progress += progress < 60 ? 2.2 : 0.6;
+      progress += progress < 60 ? 2 : 0.5;
       progress = Math.min(progress, cap);
+
       if (bar) bar.style.width = `${progress}%`;
       if (pct) pct.textContent = `${Math.round(progress)}%`;
+
       rafId = requestAnimationFrame(tick);
     }
   };
@@ -527,25 +531,29 @@ if (heroVideo) {
   rafId = requestAnimationFrame(tick);
 
   const finish = () => {
-    if (rafId) cancelAnimationFrame(rafId);
-    progress = 100;
-    if (bar) bar.style.width = "100%";
-    if (pct) pct.textContent = "100%";
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.max(0, MIN_TIME - elapsed);
 
-    // give it a beat to feel premium
     setTimeout(() => {
-      pre.classList.add("is-done");
-      pre.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("is-loading");
+      if (rafId) cancelAnimationFrame(rafId);
 
-      // optional: fully remove after fade
-      setTimeout(() => pre.remove(), 650);
-    }, 220);
+      progress = 100;
+
+      if (bar) bar.style.width = "100%";
+      if (pct) pct.textContent = "100%";
+
+      setTimeout(() => {
+        pre.classList.add("is-done");
+        pre.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("is-loading");
+
+        setTimeout(() => pre.remove(), 650);
+      }, 250);
+    }, remaining);
   };
 
-  // When everything (images, video metadata etc.) is ready
   window.addEventListener("load", finish, { once: true });
 
-  // Safety: if load hangs, still exit after 6.5s
+  // safety fallback
   setTimeout(finish, 6500);
 })();
