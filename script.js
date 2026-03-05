@@ -511,7 +511,7 @@ if (heroVideo) {
   let progress = 0;
   let rafId = null;
 
-  const MIN_TIME = 2200; // ⏱ minimum time preloader stays visible
+  const MIN_TIME = 3000; // ⏱ minimum time preloader stays visible
   const startTime = Date.now();
 
   const tick = () => {
