@@ -1485,7 +1485,7 @@ body {
 
 .footer-brand {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: flex-end;
   text-decoration: none;
 }
 
