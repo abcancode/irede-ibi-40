@@ -1538,6 +1538,13 @@ body {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.72);
   line-height: 1.8;
+  text-decoration: none;
+  transition: opacity 200ms ease;
+}
+
+.footer-link:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
 .footer-divider {
@@ -1705,6 +1712,37 @@ body {
   .backtop__progress {
     transition: none;
   }
+}
+
+/* =========================
+   Music Toggle Button
+========================= */
+.music-toggle {
+  position: absolute;
+  right: 24px;
+  bottom: 50px;
+  z-index: 5;
+
+  border: 1px solid rgba(25, 9, 6, 0.18);
+  background: rgba(254, 255, 246, 0.85);
+  color: var(--bg-dark);
+
+  border-radius: 999px;
+  padding: 10px 14px;
+
+  font-family: var(--font-body);
+  font-size: 13px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+.music-toggle:hover {
+  background: rgba(254, 255, 246, 0.95);
 }
 
 /* =========================

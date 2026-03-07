@@ -68,8 +68,18 @@
 
         <!-- Desktop Links -->
         <nav class="header-nav header-nav--desktop" aria-label="Primary">
-          <a class="nav-link" href="#nairobi" data-section="nairobi">Nairobi</a>
-          <a class="nav-link" href="#lamu" data-section="lamu">Lamu</a>
+          <a
+            class="nav-link"
+            href="https://www.marriott.com/en-us/hotels/nbojw-jw-marriott-hotel-nairobi/overview/"
+            data-section="nairobi"
+            >Nairobi</a
+          >
+          <a
+            class="nav-link"
+            href="https://www.google.com/maps/search/?api=1&query=The+Majlis+Resort+Lamu"
+            data-section="lamu"
+            >Lamu</a
+          >
         </nav>
       </div>
 
@@ -84,24 +94,18 @@
 
     <!-- Hero -->
     <section class="hero" id="hero" aria-label="Hero">
-      <!-- Hero Video Background -->
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="auto"
-        poster="https://res.cloudinary.com/djp4j1mvn/video/upload/so_0,w_1600,q_auto,f_jpg/lmegwvlwdzjubjq9rqtf.jpg"
-      >
+      <video class="hero-video" autoplay muted loop playsinline preload="auto">
         <source
-          src="https://res.cloudinary.com/djp4j1mvn/video/upload/w_1280,q_auto/lmegwvlwdzjubjq9rqtf.mp4"
+          src="https://res.cloudinary.com/djp4j1mvn/video/upload/w_1280,q_auto/fcthpzphseqw2wd1pymp.mp4"
           type="video/mp4"
         />
       </video>
 
-      <div class="hero-overlay" aria-hidden="true"></div>
+      <audio id="heroMusic" loop>
+        <source src="./assets/lion-king.mp3" type="audio/mpeg" />
+      </audio>
+
+      <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <div class="hero-pill">The Royal Ascension</div>
@@ -111,6 +115,16 @@
           At Forty.
         </h1>
       </div>
+
+      <!-- MUSIC BUTTON -->
+      <button
+        class="music-toggle"
+        id="musicToggle"
+        type="button"
+        aria-label="Toggle background music"
+      >
+        ♪ Music
+      </button>
     </section>
 
     <!-- Countdown (Overlap card lives here so it stays ABOVE countdown) -->
@@ -483,7 +497,7 @@
                   <div class="day-right">
                     <img
                       class="day-image"
-                      src="./assets/nairobi-national-museum.jpg"
+                      src="./assets/gallery-2.jpg"
                       alt="Nairobi National Museum"
                       loading="lazy"
                       decoding="async"
@@ -535,7 +549,7 @@
                   <div class="day-right">
                     <img
                       class="day-image"
-                      src="./assets/nairobi-national-park.jpg"
+                      src="./assets/gallery-7.jpg"
                       alt="Nairobi National Park"
                       loading="lazy"
                       decoding="async"
@@ -695,7 +709,7 @@
                   <div class="day-right">
                     <img
                       class="day-image"
-                      src="./assets/ibi-boat-tour.jpg"
+                      src="./assets/gallery-1.jpg"
                       alt="Ibi's Birthday Boat Tour"
                       loading="lazy"
                       decoding="async"
@@ -745,7 +759,7 @@
                   <div class="day-right">
                     <img
                       class="day-image"
-                      src="./assets/local-activities.jpg"
+                      src="./assets/gallery-10.jpg"
                       alt="Local Activities"
                       loading="lazy"
                       decoding="async"
@@ -911,7 +925,7 @@
           <!-- Left: logo + wordmark -->
           <a class="footer-brand" href="#top" aria-label="Back to top">
             <img
-              src="./assets/footer-logo.svg"
+              src="./assets/footer-logo.png"
               alt="The Royal Ascension"
               class="footer-logo"
               loading="lazy"
@@ -922,24 +936,46 @@
           <!-- Middle: locations -->
           <div class="footer-col">
             <div class="footer-title">Event Locations</div>
-            <div class="footer-link">JW Marriott Nairobi</div>
-            <div class="footer-link">The Majlis Hotel, Lamu</div>
+            <div>
+              <a
+                class="footer-link"
+                href="https://www.google.com/maps/search/?api=1&query=The+Majlis+Resort+Lamu"
+                target="_blank"
+                rel="noreferrer"
+              >
+                The Majlis Hotel, Lamu
+              </a>
+            </div>
+
+            <a
+              class="footer-link"
+              href="https://www.google.com/maps/search/?api=1&query=JW+Marriott+Hotel+Nairobi"
+              target="_blank"
+              rel="noreferrer"
+            >
+              JW Marriott Nairobi
+            </a>
           </div>
 
           <!-- Right: dates -->
           <div class="footer-col">
             <div class="footer-title">Dates</div>
-            <div class="footer-link">August 18th - 22nd, 2026</div>
-            <div class="footer-link">
-              August 16th – 18th, 2026 — Pre-Experience
+            <div>
+              <a class="footer-link" href="#prepare">
+                August 18th – 22nd, 2026
+              </a>
             </div>
+
+            <a class="footer-link" href="#prepare">
+              August 16th – 18th, 2026 — Pre-Experience
+            </a>
           </div>
         </div>
 
         <div class="footer-divider" aria-hidden="true"></div>
 
         <div class="footer-bottom">
-          The Royal Ascension Irede & Ibi at Forty — Kenya, 2026
+          © 2026 The Royal Ascension — Irede & Ibi at Forty.
         </div>
       </div>
     </footer>

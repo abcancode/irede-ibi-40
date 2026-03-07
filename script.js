@@ -557,3 +557,70 @@ if (heroVideo) {
   // safety fallback
   setTimeout(finish, 6500);
 })();
+
+/* =========================
+   Background Music System
+========================= */
+
+const heroMusic = document.getElementById("heroMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+if (heroMusic && musicToggle) {
+  heroMusic.volume = 0.35;
+
+  let autoMusicArmed = true;
+
+  const updateButton = () => {
+    musicToggle.textContent = heroMusic.paused ? "♪ Music" : "Mute";
+  };
+
+  const disarmAutoMusic = () => {
+    autoMusicArmed = false;
+    document.removeEventListener("click", startMusicOnce);
+    document.removeEventListener("touchstart", startMusicOnce);
+    document.removeEventListener("keydown", startMusicOnce);
+  };
+
+  const startMusicOnce = async () => {
+    if (!autoMusicArmed) return;
+
+    try {
+      await heroMusic.play();
+      disarmAutoMusic();
+      updateButton();
+    } catch (err) {
+      // browser may still block until a valid interaction
+    }
+  };
+
+  updateButton();
+
+  /* Auto-start on first interaction anywhere */
+  document.addEventListener("click", startMusicOnce);
+  document.addEventListener("touchstart", startMusicOnce);
+  document.addEventListener("keydown", startMusicOnce);
+
+  /* Manual toggle always wins */
+  musicToggle.addEventListener("click", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    disarmAutoMusic();
+
+    try {
+      if (heroMusic.paused) {
+        await heroMusic.play();
+      } else {
+        heroMusic.pause();
+        heroMusic.currentTime = heroMusic.currentTime; // keeps state stable
+      }
+    } catch (err) {
+      console.log("Music toggle error:", err);
+    }
+
+    updateButton();
+  });
+
+  heroMusic.addEventListener("play", updateButton);
+  heroMusic.addEventListener("pause", updateButton);
+}
