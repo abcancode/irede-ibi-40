@@ -559,68 +559,50 @@ if (heroVideo) {
 })();
 
 /* =========================
-   Background Music System
+   Background Music on First Interaction
 ========================= */
 
 const heroMusic = document.getElementById("heroMusic");
-const musicToggle = document.getElementById("musicToggle");
 
-if (heroMusic && musicToggle) {
+if (heroMusic) {
   heroMusic.volume = 0.35;
 
-  let autoMusicArmed = true;
+  let musicStarted = false;
 
-  const updateButton = () => {
-    musicToggle.textContent = heroMusic.paused ? "♪ Music" : "Mute";
-  };
-
-  const disarmAutoMusic = () => {
-    autoMusicArmed = false;
-    document.removeEventListener("click", startMusicOnce);
-    document.removeEventListener("touchstart", startMusicOnce);
-    document.removeEventListener("keydown", startMusicOnce);
-  };
-
-  const startMusicOnce = async () => {
-    if (!autoMusicArmed) return;
+  const startMusicOnFirstInteraction = async () => {
+    if (musicStarted) return;
 
     try {
       await heroMusic.play();
-      disarmAutoMusic();
-      updateButton();
+      musicStarted = true;
+
+      window.removeEventListener("click", startMusicOnFirstInteraction);
+      window.removeEventListener("scroll", startMusicOnFirstInteraction);
+      window.removeEventListener("touchstart", startMusicOnFirstInteraction);
+      window.removeEventListener("keydown", startMusicOnFirstInteraction);
+      window.removeEventListener("wheel", startMusicOnFirstInteraction);
     } catch (err) {
-      // browser may still block until a valid interaction
+      console.log("Music start blocked:", err);
     }
   };
 
-  updateButton();
-
-  /* Auto-start on first interaction anywhere */
-  document.addEventListener("click", startMusicOnce);
-  document.addEventListener("touchstart", startMusicOnce);
-  document.addEventListener("keydown", startMusicOnce);
-
-  /* Manual toggle always wins */
-  musicToggle.addEventListener("click", async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    disarmAutoMusic();
-
-    try {
-      if (heroMusic.paused) {
-        await heroMusic.play();
-      } else {
-        heroMusic.pause();
-        heroMusic.currentTime = heroMusic.currentTime; // keeps state stable
-      }
-    } catch (err) {
-      console.log("Music toggle error:", err);
-    }
-
-    updateButton();
+  window.addEventListener("click", startMusicOnFirstInteraction, {
+    passive: true,
   });
 
-  heroMusic.addEventListener("play", updateButton);
-  heroMusic.addEventListener("pause", updateButton);
+  window.addEventListener("scroll", startMusicOnFirstInteraction, {
+    passive: true,
+  });
+
+  window.addEventListener("touchstart", startMusicOnFirstInteraction, {
+    passive: true,
+  });
+
+  window.addEventListener("keydown", startMusicOnFirstInteraction, {
+    passive: true,
+  });
+
+  window.addEventListener("wheel", startMusicOnFirstInteraction, {
+    passive: true,
+  });
 }
