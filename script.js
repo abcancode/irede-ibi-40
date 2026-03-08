@@ -496,68 +496,6 @@ if (heroVideo) {
   );
 }
 
-// =========================
-// Premium Site Preloader (with minimum display time)
-// =========================
-(() => {
-  const pre = document.getElementById("sitePreloader");
-  if (!pre) return;
-
-  const bar = document.getElementById("preloaderBar");
-  const pct = document.getElementById("preloaderPct");
-
-  document.body.classList.add("is-loading");
-
-  let progress = 0;
-  let rafId = null;
-
-  const MIN_TIME = 3000; // ⏱ minimum time preloader stays visible
-  const startTime = Date.now();
-
-  const tick = () => {
-    const cap = 92;
-
-    if (progress < cap) {
-      progress += progress < 60 ? 2 : 0.5;
-      progress = Math.min(progress, cap);
-
-      if (bar) bar.style.width = `${progress}%`;
-      if (pct) pct.textContent = `${Math.round(progress)}%`;
-
-      rafId = requestAnimationFrame(tick);
-    }
-  };
-
-  rafId = requestAnimationFrame(tick);
-
-  const finish = () => {
-    const elapsed = Date.now() - startTime;
-    const remaining = Math.max(0, MIN_TIME - elapsed);
-
-    setTimeout(() => {
-      if (rafId) cancelAnimationFrame(rafId);
-
-      progress = 100;
-
-      if (bar) bar.style.width = "100%";
-      if (pct) pct.textContent = "100%";
-
-      setTimeout(() => {
-        pre.classList.add("is-done");
-        pre.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("is-loading");
-
-        setTimeout(() => pre.remove(), 650);
-      }, 250);
-    }, remaining);
-  };
-
-  window.addEventListener("load", finish, { once: true });
-
-  // safety fallback
-  setTimeout(finish, 6500);
-})();
-
 /* =========================
    Background Music on First Interaction
 ========================= */
@@ -567,42 +505,17 @@ const heroMusic = document.getElementById("heroMusic");
 if (heroMusic) {
   heroMusic.volume = 0.35;
 
-  let musicStarted = false;
-
-  const startMusicOnFirstInteraction = async () => {
-    if (musicStarted) return;
-
+  const startMusic = async () => {
     try {
       await heroMusic.play();
-      musicStarted = true;
-
-      window.removeEventListener("click", startMusicOnFirstInteraction);
-      window.removeEventListener("scroll", startMusicOnFirstInteraction);
-      window.removeEventListener("touchstart", startMusicOnFirstInteraction);
-      window.removeEventListener("keydown", startMusicOnFirstInteraction);
-      window.removeEventListener("wheel", startMusicOnFirstInteraction);
     } catch (err) {
-      console.log("Music start blocked:", err);
+      console.log("Music blocked:", err);
     }
   };
 
-  window.addEventListener("click", startMusicOnFirstInteraction, {
-    passive: true,
-  });
-
-  window.addEventListener("scroll", startMusicOnFirstInteraction, {
-    passive: true,
-  });
-
-  window.addEventListener("touchstart", startMusicOnFirstInteraction, {
-    passive: true,
-  });
-
-  window.addEventListener("keydown", startMusicOnFirstInteraction, {
-    passive: true,
-  });
-
-  window.addEventListener("wheel", startMusicOnFirstInteraction, {
-    passive: true,
-  });
+  window.addEventListener("click", startMusic, { once: true });
+  window.addEventListener("touchstart", startMusic, { once: true });
+  window.addEventListener("keydown", startMusic, { once: true });
+  window.addEventListener("scroll", startMusic, { once: true });
+  window.addEventListener("wheel", startMusic, { once: true });
 }

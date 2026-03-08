@@ -17,30 +17,6 @@
   </head>
 
   <body>
-    <!-- Site Preloader -->
-    <div id="sitePreloader" class="preloader" aria-hidden="false">
-      <div class="preloader__backdrop"></div>
-
-      <div class="preloader__card" role="status" aria-live="polite">
-        <div class="preloader__brand">The Royal Ascension</div>
-
-        <div class="preloader__line">
-          <span class="preloader__dot"></span>
-          <span class="preloader__dot"></span>
-          <span class="preloader__dot"></span>
-        </div>
-
-        <div class="preloader__bar" aria-hidden="true">
-          <div class="preloader__barFill" id="preloaderBar"></div>
-        </div>
-
-        <div class="preloader__meta">
-          <span class="preloader__hint">Curating your experience...</span>
-          <span class="preloader__pct" id="preloaderPct">0%</span>
-        </div>
-      </div>
-    </div>
-
     <!-- Header -->
     <header class="site-header" role="banner">
       <div class="header-inner">
@@ -94,7 +70,15 @@
 
     <!-- Hero -->
     <section class="hero" id="hero" aria-label="Hero">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="./assets/hero-1.jpg"
+      >
         <source
           src="https://res.cloudinary.com/djp4j1mvn/video/upload/w_1280,q_auto/fcthpzphseqw2wd1pymp.mp4"
           type="video/mp4"
