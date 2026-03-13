@@ -4,26 +4,29 @@ const menuBtn = document.querySelector(".menu-btn");
 const mobileMenu = document.querySelector("#mobileMenu");
 
 const setMenuOpen = (open) => {
+  if (!header || !menuBtn || !mobileMenu) return;
+
   header.classList.toggle("is-open", open);
   menuBtn.setAttribute("aria-expanded", String(open));
 
   if (open) {
     mobileMenu.hidden = false;
-    // Move focus to first link for accessibility
     const firstLink = mobileMenu.querySelector("a");
-    firstLink && firstLink.focus();
+    if (firstLink) firstLink.focus();
   } else {
     mobileMenu.hidden = true;
   }
 };
 
-menuBtn.addEventListener("click", () => {
-  const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
-  setMenuOpen(!isOpen);
-});
+if (menuBtn) {
+  menuBtn.addEventListener("click", () => {
+    const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+    setMenuOpen(!isOpen);
+  });
+}
 
-// Close on ESC
 document.addEventListener("keydown", (e) => {
+  if (!menuBtn) return;
   const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
   if (!isOpen) return;
 
@@ -33,20 +36,20 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Close menu when clicking a mobile link
-mobileMenu.addEventListener("click", (e) => {
-  const a = e.target.closest("a");
-  if (!a) return;
-  setMenuOpen(false);
-});
+if (mobileMenu) {
+  mobileMenu.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    setMenuOpen(false);
+  });
+}
 
-// Close menu if window resized up to desktop
 window.addEventListener("resize", () => {
   if (window.innerWidth > 820) setMenuOpen(false);
 });
 
-// ===== Smooth scroll + active link highlighting for a one-pager =====
-const links = Array.from(document.querySelectorAll(".nav-link"));
+// ===== Smooth scroll only for internal anchors =====
+const links = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
 const sections = links
   .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
   .filter(Boolean);
@@ -70,18 +73,20 @@ const setActive = (id) => {
   });
 };
 
-const obs = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((e) => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+if (sections.length) {
+  const obs = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-    if (visible?.target?.id) setActive(visible.target.id);
-  },
-  { threshold: [0.35, 0.5, 0.75] },
-);
+      if (visible?.target?.id) setActive(visible.target.id);
+    },
+    { threshold: [0.35, 0.5, 0.75] },
+  );
 
-sections.forEach((sec) => obs.observe(sec));
+  sections.forEach((sec) => obs.observe(sec));
+}
 
 window.addEventListener("load", () => {
   const hash = location.hash?.replace("#", "");
@@ -91,9 +96,6 @@ window.addEventListener("load", () => {
 /* ==========================
    Countdown Timer
 ========================== */
-
-// 🔁 SET YOUR EVENT DATE HERE
-// Format: "Month Day, Year HH:MM:SS"
 const eventDate = new Date("August 16, 2026 18:00:00").getTime();
 
 const daysEl = document.getElementById("days");
@@ -102,6 +104,8 @@ const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
 function updateCountdown() {
+  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
   const now = new Date().getTime();
   const distance = eventDate - now;
 
@@ -120,7 +124,7 @@ function updateCountdown() {
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  daysEl.textContent = days;
+  daysEl.textContent = String(days);
   hoursEl.textContent = String(hours).padStart(2, "0");
   minutesEl.textContent = String(minutes).padStart(2, "0");
   secondsEl.textContent = String(seconds).padStart(2, "0");
@@ -129,7 +133,7 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// Message form (basic validation only)
+// ===== Message form =====
 const messageForm = document.getElementById("messageForm");
 const privacyCheck = document.getElementById("privacyCheck");
 const formNote = document.getElementById("formNote");
@@ -142,16 +146,24 @@ if (messageForm) {
     const msg = String(fd.get("message") || "").trim();
 
     if (!msg) {
-      formNote.textContent = "Please write a message before sending.";
+      if (formNote) {
+        formNote.textContent = "Please write a message before sending.";
+      }
       return;
     }
 
     if (!privacyCheck?.checked) {
-      formNote.textContent = "Please agree to the privacy policy to continue.";
+      if (formNote) {
+        formNote.textContent =
+          "Please agree to the privacy policy to continue.";
+      }
       return;
     }
 
-    formNote.textContent = "Thank you! Your message has been recorded (demo).";
+    if (formNote) {
+      formNote.textContent =
+        "Thank you! Your message has been recorded (demo).";
+    }
     messageForm.reset();
   });
 }
@@ -159,7 +171,6 @@ if (messageForm) {
 /* ==========================
    Add to Calendar (Google + ICS)
 ========================== */
-
 const mainEvent = {
   title: "Irede & Ibi’s 40th Birthday — Main Event (Lamu)",
   description:
@@ -252,7 +263,6 @@ function downloadTextFile(filename, content, mime = "text/calendar") {
   URL.revokeObjectURL(url);
 }
 
-/* Wire up dropdown links/buttons */
 const gcalMain = document.getElementById("gcalMainEvent");
 const gcalOptional = document.getElementById("gcalOptionalEvent");
 
@@ -277,14 +287,13 @@ if (icsOptionalBtn) {
   });
 }
 
-/* Optional UX: close dropdown when clicking outside */
 document.addEventListener("click", (e) => {
   const dd = document.getElementById("calendarDropdown");
   if (!dd || !dd.open) return;
   if (!dd.contains(e.target)) dd.open = false;
 });
 
-// Itinerary Accordion (recalc height properly)
+// ===== Itinerary Accordion =====
 const itineraryItems = Array.from(document.querySelectorAll(".itinerary-item"));
 
 function closeAllItinerary() {
@@ -299,7 +308,7 @@ function openItinerary(item) {
   const content = item.querySelector(".itinerary-content");
   if (!content) return;
   item.classList.add("open");
-  content.style.maxHeight = content.scrollHeight + "px";
+  content.style.maxHeight = `${content.scrollHeight}px`;
 }
 
 itineraryItems.forEach((item) => {
@@ -314,20 +323,20 @@ itineraryItems.forEach((item) => {
   });
 });
 
-// Recalc open panel on resize (images loading can change height)
 window.addEventListener("resize", () => {
   const openItem = document.querySelector(".itinerary-item.open");
   if (!openItem) return;
   const content = openItem.querySelector(".itinerary-content");
   if (!content) return;
-  content.style.maxHeight = content.scrollHeight + "px";
+  content.style.maxHeight = `${content.scrollHeight}px`;
 });
 
 /* ==========================
-   Gallery: Scroll reveal + Lightbox
+   Galleries: Scroll reveal + Lightbox
 ========================== */
-
-const galleryGrid = document.getElementById("galleryGrid");
+const galleryGrids = document.querySelectorAll(
+  "#galleryGridCouple, #galleryGridRoyal",
+);
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 const lightboxCap = document.getElementById("lightboxCap");
@@ -335,28 +344,35 @@ const lightboxCap = document.getElementById("lightboxCap");
 let galleryItems = [];
 let activeIndex = 0;
 
-if (galleryGrid) {
-  galleryItems = Array.from(galleryGrid.querySelectorAll(".gallery-item"));
+galleryGrids.forEach((grid) => {
+  const items = Array.from(grid.querySelectorAll(".gallery-item"));
+  if (!items.length) return;
 
-  // Scroll reveal
-  galleryItems.forEach((el) => el.classList.add("reveal"));
+  items.forEach((el) => el.classList.add("reveal"));
+
   const galObs = new IntersectionObserver(
     (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("is-in");
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("is-in");
       });
     },
     { threshold: 0.18 },
   );
-  galleryItems.forEach((el) => galObs.observe(el));
 
-  // Lightbox open
-  galleryItems.forEach((item, idx) => {
-    item.addEventListener("click", () => openLightbox(idx));
+  items.forEach((el) => galObs.observe(el));
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      galleryItems = items;
+      activeIndex = items.indexOf(item);
+      openLightbox(activeIndex);
+    });
   });
-}
+});
 
 function openLightbox(idx) {
+  if (!galleryItems.length || !lightbox || !lightboxImg || !lightboxCap) return;
+
   activeIndex = idx;
   const item = galleryItems[activeIndex];
   const full = item.getAttribute("data-full") || item.querySelector("img")?.src;
@@ -364,44 +380,53 @@ function openLightbox(idx) {
 
   lightboxImg.src = full;
   lightboxCap.textContent = cap;
-
   lightbox.hidden = false;
   lightbox.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
 
 function closeLightbox() {
+  if (!lightbox) return;
   lightbox.hidden = true;
   lightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
 
 function goNext() {
+  if (!galleryItems.length) return;
   activeIndex = (activeIndex + 1) % galleryItems.length;
   openLightbox(activeIndex);
 }
 
 function goPrev() {
+  if (!galleryItems.length) return;
   activeIndex = (activeIndex - 1 + galleryItems.length) % galleryItems.length;
   openLightbox(activeIndex);
 }
 
 if (lightbox) {
-  // Close on backdrop/close button
   lightbox.addEventListener("click", (e) => {
     const t = e.target;
     if (t?.matches("[data-close]")) closeLightbox();
   });
 
-  // Nav buttons
   const prevBtn = lightbox.querySelector(".lightbox-prev");
   const nextBtn = lightbox.querySelector(".lightbox-next");
-  if (prevBtn)
-    prevBtn.addEventListener("click", (e) => (e.stopPropagation(), goPrev()));
-  if (nextBtn)
-    nextBtn.addEventListener("click", (e) => (e.stopPropagation(), goNext()));
 
-  // Keyboard
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goPrev();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goNext();
+    });
+  }
+
   document.addEventListener("keydown", (e) => {
     if (lightbox.hidden) return;
     if (e.key === "Escape") closeLightbox();
@@ -430,7 +455,6 @@ function updateBackTop() {
   const y = window.scrollY || document.documentElement.scrollTop;
   const showAfter = 420;
 
-  // show/hide
   if (y > showAfter) {
     backTop.hidden = false;
     backTop.classList.add("is-visible");
@@ -441,19 +465,17 @@ function updateBackTop() {
     }, 250);
   }
 
-  // progress ring
   if (progressPath) {
-    const p = getScrollProgress(); // 0..1
-    const dash = 100 - p * 100; // 100..0
+    const p = getScrollProgress();
+    const dash = 100 - p * 100;
     progressPath.style.strokeDashoffset = String(dash);
-  }
-}
 
-const p = getScrollProgress();
-if (p > 0.95) {
-  backTop.classList.add("is-complete");
-} else {
-  backTop.classList.remove("is-complete");
+    if (p > 0.95) {
+      backTop.classList.add("is-complete");
+    } else {
+      backTop.classList.remove("is-complete");
+    }
+  }
 }
 
 updateBackTop();
@@ -469,7 +491,6 @@ if (backTop) {
 /* ==========================
    Prep Section Slider
 ========================== */
-
 const prepSlides = document.querySelectorAll(".prep-slider .slide");
 
 if (prepSlides.length) {
@@ -477,29 +498,14 @@ if (prepSlides.length) {
 
   setInterval(() => {
     prepSlides[prepIndex].classList.remove("active");
-
     prepIndex = (prepIndex + 1) % prepSlides.length;
-
     prepSlides[prepIndex].classList.add("active");
   }, 5000);
-}
-
-const heroVideo = document.querySelector(".hero-video");
-
-if (heroVideo) {
-  heroVideo.addEventListener(
-    "canplay",
-    () => {
-      heroVideo.classList.add("is-ready");
-    },
-    { once: true },
-  );
 }
 
 /* =========================
    Background Music on First Interaction
 ========================= */
-
 const heroMusic = document.getElementById("heroMusic");
 
 if (heroMusic) {

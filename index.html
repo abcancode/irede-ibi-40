@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Royal Ascension — Irede & Ibi at 40</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,10 +16,8 @@
   </head>
 
   <body>
-    <!-- Header -->
     <header class="site-header" role="banner">
       <div class="header-inner">
-        <!-- LEFT: Logo -->
         <a class="brand" href="#top" aria-label="Go to top">
           <img
             src="./assets/logo.svg"
@@ -31,7 +28,6 @@
           />
         </a>
 
-        <!-- Hamburger (mobile) -->
         <button
           class="menu-btn"
           type="button"
@@ -42,49 +38,45 @@
           <span class="menu-btn__bars" aria-hidden="true"></span>
         </button>
 
-        <!-- Desktop Links -->
         <nav class="header-nav header-nav--desktop" aria-label="Primary">
           <a
             class="nav-link"
             href="https://www.marriott.com/en-us/hotels/nbojw-jw-marriott-hotel-nairobi/overview/"
-            data-section="nairobi"
+            target="_blank"
+            rel="noreferrer"
             >Nairobi</a
           >
           <a
             class="nav-link"
             href="https://themajlisresorts.com/"
-            data-section="lamu"
+            target="_blank"
+            rel="noreferrer"
             >Lamu</a
           >
         </nav>
       </div>
 
-      <!-- Mobile Menu Panel -->
       <div class="mobile-menu" id="mobileMenu" hidden>
         <nav class="header-nav header-nav--mobile" aria-label="Mobile Primary">
-          <a class="nav-link" href="#nairobi" data-section="nairobi">Nairobi</a>
-          <a class="nav-link" href="#lamu" data-section="lamu">Lamu</a>
+          <a
+            class="nav-link"
+            href="https://www.marriott.com/en-us/hotels/nbojw-jw-marriott-hotel-nairobi/overview/"
+            target="_blank"
+            rel="noreferrer"
+            >Nairobi</a
+          >
+          <a
+            class="nav-link"
+            href="https://themajlisresorts.com/"
+            target="_blank"
+            rel="noreferrer"
+            >Lamu</a
+          >
         </nav>
       </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero" id="hero" aria-label="Hero">
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        poster="./assets/hero-1.jpg"
-      >
-        <source
-          src="https://res.cloudinary.com/djp4j1mvn/video/upload/w_1280,q_auto/fcthpzphseqw2wd1pymp.mp4"
-          type="video/mp4"
-        />
-      </video>
-
       <audio id="heroMusic" loop>
         <source src="./assets/lion-king.mp3" type="audio/mpeg" />
       </audio>
@@ -101,13 +93,10 @@
       </div>
     </section>
 
-    <!-- Countdown (Overlap card lives here so it stays ABOVE countdown) -->
     <section class="countdown-section" id="countdown">
-      <!-- ✅ Overlap Card (pulled upward into hero) -->
       <div class="countdown-overlap" aria-label="Event dates overview">
         <div class="overlap-card">
           <div class="overlap-item">
-            <!-- <div class="overlap-kicker">Main Event</div> -->
             <div class="overlap-date">The Majlis Hotel, Lamu</div>
             <div class="overlap-meta">August 18th – 22nd, 2026</div>
           </div>
@@ -138,15 +127,12 @@
           <div class="countdown-box">
             <div class="count-number" id="days">00</div>
           </div>
-
           <div class="countdown-box">
             <div class="count-number" id="hours">00</div>
           </div>
-
           <div class="countdown-box">
             <div class="count-number" id="minutes">00</div>
           </div>
-
           <div class="countdown-box">
             <div class="count-number" id="seconds">00</div>
           </div>
@@ -158,18 +144,71 @@
           <span>MINUTES</span>
           <span>SECONDS</span>
         </div>
-
-        <!-- <p class="countdown-footer">...until the celebration.</p> -->
       </div>
     </section>
 
-    <!-- Prepare for the Celebration -->
+    <!-- Irede & Ibi Gallery -->
+    <section class="gallery gallery-couple" id="galleryCouple">
+      <div class="gallery-container">
+        <h2 class="gallery-title">Irede & Ibi Gallery</h2>
+
+        <div class="gallery-grid" id="galleryGridCouple">
+          <figure class="gallery-item" data-full="./assets/irede-ibi-1.jpeg">
+            <img
+              src="./assets/irede-ibi-1.jpeg"
+              alt="Irede and Ibi portrait"
+              loading="lazy"
+            />
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/irede-ibi-2.jpeg">
+            <img
+              src="./assets/irede-ibi-2.jpeg"
+              alt="Irede and Ibi together"
+              loading="lazy"
+            />
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/irede-ibi-3.jpeg">
+            <img
+              src="./assets/irede-ibi-3.jpeg"
+              alt="Irede and Ibi mirror photo"
+              loading="lazy"
+            />
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/irede-ibi-4.jpeg">
+            <img
+              src="./assets/irede-ibi-4.jpeg"
+              alt="Irede and Ibi on a boat"
+              loading="lazy"
+            />
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/irede-ibi-5.jpeg">
+            <img
+              src="./assets/irede-ibi-5.jpeg"
+              alt="Irede and Ibi outdoors"
+              loading="lazy"
+            />
+          </figure>
+
+          <figure class="gallery-item" data-full="./assets/irede-ibi-6.jpeg">
+            <img
+              src="./assets/irede-ibi-6.jpeg"
+              alt="Irede and Ibi at the stadium"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="prep" id="prepare">
       <div class="prep-container">
         <h2 class="prep-title">Everything You Need</h2>
 
         <div class="prep-grid">
-          <!-- LEFT -->
           <div class="prep-left">
             <div class="prep-section">
               <h3 class="prep-subtitle">Secure Your Stay</h3>
@@ -245,6 +284,7 @@
                 </p>
               </div>
             </div>
+
             <div class="prep-section">
               <div class="prep-block">
                 <h4 class="prep-q">Travel Recommendations.</h4>
@@ -368,7 +408,6 @@
             </div>
           </div>
 
-          <!-- RIGHT -->
           <div class="prep-right">
             <figure class="prep-photo prep-slider">
               <img src="./assets/hero-1.jpg" class="slide active" alt="" />
@@ -385,7 +424,6 @@
       </div>
     </section>
 
-    <!-- Share a Message -->
     <section class="message" id="message">
       <div class="message-container">
         <h2 class="message-title">Leave Your Mark</h2>
@@ -407,26 +445,23 @@
               class="field-textarea"
               name="message"
               rows="5"
-              placeholder=""
               required
             ></textarea>
           </label>
 
           <label class="field field-check">
             <input class="field-checkbox" type="checkbox" id="privacyCheck" />
-            <span class="field-checktext"
-              >Your message is private and shared only with Irede & Ibi.</span
-            >
+            <span class="field-checktext">
+              Your message is private and shared only with Irede & Ibi.
+            </span>
           </label>
 
           <button class="message-btn" type="submit">Send My Wishes</button>
-
           <p class="form-note" id="formNote" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
-    <!-- Royal Ascension Itinerary -->
     <section class="itinerary" id="itinerary">
       <div class="itinerary-container">
         <h2 class="itinerary-title">The Royal Ascension Itinerary</h2>
@@ -436,7 +471,6 @@
         </p>
 
         <div class="itinerary-list">
-          <!-- Day Item -->
           <div class="itinerary-item">
             <button class="itinerary-header">
               <div>
@@ -448,7 +482,6 @@
             <div class="itinerary-content">
               <div class="itinerary-inner">
                 <div class="day-grid">
-                  <!-- LEFT -->
                   <div class="day-left">
                     <div class="day-block">
                       <div class="day-label">Description</div>
@@ -475,7 +508,6 @@
                     </div>
                   </div>
 
-                  <!-- RIGHT -->
                   <div class="day-right">
                     <img
                       class="day-image"
@@ -501,7 +533,6 @@
             <div class="itinerary-content">
               <div class="itinerary-inner">
                 <div class="day-grid">
-                  <!-- LEFT -->
                   <div class="day-left">
                     <div class="day-block">
                       <div class="day-label">Description</div>
@@ -527,7 +558,6 @@
                     </div>
                   </div>
 
-                  <!-- RIGHT -->
                   <div class="day-right">
                     <img
                       class="day-image"
@@ -555,7 +585,6 @@
             <div class="itinerary-content">
               <div class="itinerary-inner">
                 <div class="day-grid">
-                  <!-- LEFT -->
                   <div class="day-left">
                     <div class="day-block">
                       <div class="day-label">Description</div>
@@ -582,7 +611,6 @@
                     </div>
                   </div>
 
-                  <!-- RIGHT -->
                   <div class="day-right">
                     <img
                       class="day-image"
@@ -610,7 +638,6 @@
             <div class="itinerary-content">
               <div class="itinerary-inner">
                 <div class="day-grid">
-                  <!-- LEFT -->
                   <div class="day-left">
                     <div class="day-block">
                       <div class="day-label">Description</div>
@@ -643,7 +670,6 @@
                     </div>
                   </div>
 
-                  <!-- RIGHT -->
                   <div class="day-right">
                     <img
                       class="day-image"
@@ -671,7 +697,6 @@
             <div class="itinerary-content">
               <div class="itinerary-inner">
                 <div class="day-grid">
-                  <!-- LEFT -->
                   <div class="day-left">
                     <div class="day-block">
                       <div class="day-label">Description</div>
@@ -699,7 +724,6 @@
                     </div>
                   </div>
 
-                  <!-- RIGHT -->
                   <div class="day-right">
                     <img
                       class="day-image"
@@ -725,7 +749,6 @@
             <div class="itinerary-content">
               <div class="itinerary-inner">
                 <div class="day-grid">
-                  <!-- LEFT -->
                   <div class="day-left">
                     <div class="day-block">
                       <div class="day-label">Description</div>
@@ -749,7 +772,6 @@
                     </div>
                   </div>
 
-                  <!-- RIGHT -->
                   <div class="day-right">
                     <img
                       class="day-image"
@@ -775,7 +797,6 @@
             <div class="itinerary-content">
               <div class="itinerary-inner">
                 <div class="day-grid">
-                  <!-- LEFT -->
                   <div class="day-left">
                     <div class="day-block">
                       <div class="day-label">Description</div>
@@ -797,7 +818,6 @@
                     </div>
                   </div>
 
-                  <!-- RIGHT -->
                   <div class="day-right">
                     <img
                       class="day-image"
@@ -816,11 +836,11 @@
     </section>
 
     <!-- Royal Ascension Gallery -->
-    <section class="gallery" id="gallery">
+    <section class="gallery" id="gallery-royal">
       <div class="gallery-container">
         <h2 class="gallery-title">The Royal Ascension Gallery</h2>
 
-        <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-grid" id="galleryGridRoyal">
           <figure class="gallery-item" data-full="./assets/gallery-1.jpg">
             <img
               src="./assets/gallery-1.jpg"
@@ -870,53 +890,52 @@
           </figure>
         </div>
       </div>
-
-      <!-- Lightbox -->
-      <div class="lightbox" id="lightbox" hidden aria-hidden="true">
-        <div class="lightbox-backdrop" data-close></div>
-
-        <div
-          class="lightbox-dialog"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Gallery image"
-        >
-          <button
-            class="lightbox-close"
-            type="button"
-            aria-label="Close"
-            data-close
-          >
-            ✕
-          </button>
-
-          <button
-            class="lightbox-nav lightbox-prev"
-            type="button"
-            aria-label="Previous"
-          >
-            ‹
-          </button>
-          <button
-            class="lightbox-nav lightbox-next"
-            type="button"
-            aria-label="Next"
-          >
-            ›
-          </button>
-
-          <figure class="lightbox-figure">
-            <img class="lightbox-img" id="lightboxImg" alt="" />
-            <figcaption class="lightbox-cap" id="lightboxCap"></figcaption>
-          </figure>
-        </div>
-      </div>
     </section>
+
+    <!-- One shared lightbox -->
+    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
+      <div class="lightbox-backdrop" data-close></div>
+
+      <div
+        class="lightbox-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Gallery image"
+      >
+        <button
+          class="lightbox-close"
+          type="button"
+          aria-label="Close"
+          data-close
+        >
+          ✕
+        </button>
+
+        <button
+          class="lightbox-nav lightbox-prev"
+          type="button"
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+        <button
+          class="lightbox-nav lightbox-next"
+          type="button"
+          aria-label="Next"
+        >
+          ›
+        </button>
+
+        <figure class="lightbox-figure">
+          <img class="lightbox-img" id="lightboxImg" alt="" />
+          <figcaption class="lightbox-cap" id="lightboxCap"></figcaption>
+        </figure>
+      </div>
+    </div>
 
     <footer class="site-footer" role="contentinfo">
       <div class="footer-inner">
         <div class="footer-top">
-          <!-- Left: logo + wordmark -->
           <a class="footer-brand" href="#top" aria-label="Back to top">
             <img
               src="./assets/footer-logo.png"
@@ -927,7 +946,6 @@
             />
           </a>
 
-          <!-- Middle: locations -->
           <div class="footer-col">
             <div class="footer-title">Event Locations</div>
             <div>
@@ -951,13 +969,12 @@
             </a>
           </div>
 
-          <!-- Right: dates -->
           <div class="footer-col">
             <div class="footer-title">Dates</div>
             <div>
-              <a class="footer-link" href="#prepare">
-                August 18th – 22nd, 2026
-              </a>
+              <a class="footer-link" href="#prepare"
+                >August 18th – 22nd, 2026</a
+              >
             </div>
 
             <a class="footer-link" href="#prepare">
@@ -974,7 +991,6 @@
       </div>
     </footer>
 
-    <!-- Back to Top (Premium + Progress Ring) -->
     <button
       class="backtop"
       id="backTop"
@@ -984,12 +1000,10 @@
     >
       <span class="backtop__ring" aria-hidden="true">
         <svg class="backtop__svg" viewBox="0 0 36 36">
-          <!-- Track -->
           <path
             class="backtop__track"
             d="M18 2.5a15.5 15.5 0 1 1 0 31a15.5 15.5 0 1 1 0-31"
           />
-          <!-- Progress -->
           <path
             class="backtop__progress"
             d="M18 2.5a15.5 15.5 0 1 1 0 31a15.5 15.5 0 1 1 0-31"
